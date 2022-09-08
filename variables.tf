@@ -1,34 +1,19 @@
-variable "vsphere_user" {
-    description = "login"  
-    default = "avildanov@lab.lan"
+variable project {
+  description = "Project ID"
 }
-
-variable "vsphere_pass" {
-    description = "password"
-    default = "tooQu4ou!"
+variable vcd_org {
 }
-
-variable "vsphere_server1" {
-    description = "ip of FQDN vsphere server"
-    default = "192.168.15.58"
+variable vcd_pass {
 }
-
-variable "vsphere_dc1" {
-    description = "name datacenter"
-    default = "DC1"
+variable vcd_url {
 }
-
-variable "instance_count" {
-    description = "count vms"
-    default = 1
+variable vcd_user {
 }
-
-variable "instance_cpu" {
-    description = "count vCPU`s"
-    default = 8  
+variable vcd_vdc {
 }
-
-variable "instance_ram" {
-    description = "count RAM (MB)"
-    default = 16384
+variable "vcd_ext_ntwrk_name" {
+  default = "gapou_LAN"
+}
+variable "vcd_edge_gw" {
+  default = "gapou_M14_VDC_EDGE"
 }

@@ -1,0 +1,5 @@
+#cloud-config
+chpasswd:
+  list: |
+    sysadmin:P@ssw0rd!
+  expire: False
