@@ -17,3 +17,6 @@ variable "vcd_ext_ntwrk_name" {
 variable "vcd_edge_gw" {
   default = "gapou_M14_VDC_EDGE"
 }
+variable "cml_passwd" {
+  default = "P@ssw0rd!"
+}

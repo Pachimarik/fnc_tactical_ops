@@ -1,17 +1,29 @@
-# terraform {
-#   required_providers {
-#     random = {
-#       source = "hashicorp/random"
-#       version = "3.4.3"
-#     }
-#     vcd = {
-#       source = "vmware/vcd"
-#       version = "3.7.0"
-#     }
-#   }
-# }
+terraform {
+  required_providers {
+    random = {
+      source = "hashicorp/random"
+      version = "3.4.3"
+    }
+    vcd = {
+      source = "vmware/vcd"
+      version = "3.7.0"
+    }
+    http-full = {
+      source = "salrashid123/http-full"
+      version = "1.3.1"
+    }
+    time = {
+      source = "hashicorp/time"
+      version = "0.8.0"
+    }
+  }
+}
 
 provider "random" {
+}
+provider "http-full" { 
+}
+provider "time" {
 }
 
 provider "vcd" {
@@ -35,4 +47,6 @@ resource "random_integer" "port_ssh_value" {
   max = 65535
   seed = timeadd(timestamp(), "5s")
 }
+
+
 

@@ -16,21 +16,22 @@ resource "vcd_vapp_vm" "web1" {
   name      = "${var.project}-VM1"
 
   catalog_name  = "CML_Templates"
-  template_name = "CML2_Template_Production"
+  template_name = "CML2-With-Cloud-Init"
   expose_hardware_virtualization = true
 
   memory = 8192
-  cpus   = 2
+  cpus   = 4
+  cpu_cores = 2
 
   network {
     type               = "org"
     name               = vcd_vapp_org_network.direct-network.org_network_name
     ip_allocation_mode = "POOL"
   }
-  # guest_properties = {
-  #   "local-hostname"      = "cml-controller"
-  #   "user-data"           = base64encode(file("${path.module}/userdata.yaml"))
-  # }
+  guest_properties = {
+    "local-hostname"      = "cml-controller"
+    "user-data"           = base64encode(file("${path.module}/userdata.yaml"))
+  }
 
  metadata = {
    project = "${var.project}"
