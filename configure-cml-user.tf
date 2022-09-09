@@ -3,6 +3,8 @@ locals {
   bearer = replace(data.http.get_bearer.response_body,"\"","")
   result = data.http.change_pw.response_body
   checked = 0
+  username = var.cml_username == "" ? random_pet.vapp-name.id: var.cml_username
+  password = var.cml_passwd == "" ? random_password.password.result : var.cml_passwd
 }
 
 resource "time_sleep" "waiter" {
@@ -51,10 +53,10 @@ data "http" "change_pw"{
   }
 
   request_body = jsonencode({
-    username = var.cml_username
+    username = local.username
     password = {
         old_password = "P@ssw0rd"
-        new_password = var.cml_passwd
+        new_password = local.password
     }
   })
 

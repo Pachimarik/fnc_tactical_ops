@@ -19,9 +19,11 @@ output "connection_url" {
 #output "bearer" {
 #  value = local.result
 #}
-output "username" {
-  value = var.cml_username
+output "cml-username" {
+  value = local.username
+  sensitive = true
 }
-output "password" {
-  value = var.cml_passwd
+output "cml-pw" {
+  value = local.password
+  sensitive = true
 }
