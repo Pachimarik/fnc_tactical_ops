@@ -1,5 +1,6 @@
 variable project {
   description = "Project ID"
+  default = ""
 }
 variable vcd_org {
 }
@@ -19,4 +20,13 @@ variable "vcd_edge_gw" {
 }
 variable "cml_passwd" {
   default = "P@ssw0rd!"
+}
+variable "cml_username" {
+  default = "admin"
+}
+variable "total_ram" {
+  default = 8192
+}
+variable "total_cpu" {
+  default = 4
 }

@@ -1,6 +1,8 @@
 locals {
   cml_url = "https://${data.vcd_edgegateway.egw.default_external_network_ip}:${vcd_nsxv_dnat.dnat-frontend.original_port}"
   bearer = replace(data.http.get_bearer.response_body,"\"","")
+  result = data.http.change_pw.response_body
+  checked = 0
 }
 
 resource "time_sleep" "waiter" {
@@ -35,6 +37,7 @@ data "http" "get_bearer" {
     vcd_nsxv_dnat.dnat-frontend,
     time_sleep.waiter
   ]
+  
 }
 data "http" "change_pw"{
     provider = http-full
@@ -48,6 +51,7 @@ data "http" "change_pw"{
   }
 
   request_body = jsonencode({
+    username = var.cml_username
     password = {
         old_password = "P@ssw0rd"
         new_password = var.cml_passwd

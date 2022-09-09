@@ -1,8 +1,12 @@
+locals {
+  project = var.project == "" ? "CML2-${random_pet.vapp-name.id}" : var.project
+}
+
 resource "vcd_vapp" "web" {
-  name = "${var.project}"
+  name = "${local.project}"
 
   metadata = {
-    project = "${var.project}"
+    project = "${local.project}"
   }
 }
 
@@ -13,15 +17,14 @@ resource "vcd_vapp_org_network" "direct-network" {
 
 resource "vcd_vapp_vm" "web1" {
   vapp_name = vcd_vapp.web.name
-  name      = "${var.project}-VM1"
+  name      = "${local.project}-VM1"
 
   catalog_name  = "CML_Templates"
   template_name = "CML2-With-Cloud-Init"
   expose_hardware_virtualization = true
 
-  memory = 8192
-  cpus   = 4
-  cpu_cores = 2
+  memory = var.total_ram
+  cpus   = var.total_cpu
 
   network {
     type               = "org"
@@ -34,6 +37,6 @@ resource "vcd_vapp_vm" "web1" {
   }
 
  metadata = {
-   project = "${var.project}"
+   project = "${local.project}"
  }
 }

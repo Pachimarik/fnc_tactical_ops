@@ -30,10 +30,10 @@ resource "vcd_nsxv_dnat" "dnat-ssh" {
 
   enabled         = true
   logging_enabled = true
-  description     = "${var.project}-SSH"
+  description     = "${var.project}-SSH-CML"
 
   original_address = data.vcd_edgegateway.egw.default_external_network_ip
-  original_port    = random_integer.port_ssh_value.result
+  original_port    = random_integer.port_ssh_cml_value.result
 
   translated_address = vcd_vapp_vm.web1.network[0].ip
   translated_port    = 22
@@ -46,12 +46,12 @@ resource "vcd_nsxv_dnat" "dnat-ssh-machine" {
 
   enabled         = true
   logging_enabled = true
-  description     = "${var.project}-SSH"
+  description     = "${var.project}-SSH-OS"
 
   original_address = data.vcd_edgegateway.egw.default_external_network_ip
-  original_port    = 9090
+  original_port    = random_integer.port_ssh_os_value.result
 
   translated_address = vcd_vapp_vm.web1.network[0].ip
-  translated_port    = 9090
+  translated_port    = 1122
   protocol           = "tcp"
 }

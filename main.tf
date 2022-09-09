@@ -42,11 +42,16 @@ resource "random_integer" "port_frontend_value" {
   seed = timestamp()
 }
 
-resource "random_integer" "port_ssh_value" {
+resource "random_integer" "port_ssh_cml_value" {
   min = 1024
   max = 65535
   seed = timeadd(timestamp(), "5s")
 }
-
-
+resource "random_integer" "port_ssh_os_value" {
+  min = 1024
+  max = 65535
+  seed = timeadd(timestamp(), "3s")
+}
+resource "random_pet" "vapp-name" {
+}
 
