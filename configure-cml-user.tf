@@ -71,23 +71,3 @@ data "http" "change_pw"{
   ]
     
 }
-# data "http" "get_uuid" {
-#   provider = http-full
-#   url = "${local.cml_url}/api/v0/users/admin/id"
-#   method = "GET"
-#   insecure_skip_verify = true
-
-#   request_headers = {
-#     Accept = "application/json"
-#     Authorization =  "Bearer ${local.bearer}"
-#   } 
-#   lifecycle {
-#     postcondition {
-#       condition     = contains([200], self.status_code)
-#       error_message = "Status code invalid"
-#     }
-#   }
-#   depends_on = [
-#     data.http.get_bearer    
-#   ]
-# }
