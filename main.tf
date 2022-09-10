@@ -54,4 +54,8 @@ resource "random_integer" "port_ssh_os_value" {
 }
 resource "random_pet" "vapp-name" {
 }
-
+resource "random_password" "password" {
+  length           = 16
+  special          = false
+#  override_special = "!#$%&*()-_=+[]{}<>:?"
+}

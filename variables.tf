@@ -19,10 +19,10 @@ variable "vcd_edge_gw" {
   default = "gapou_M14_VDC_EDGE"
 }
 variable "cml_passwd" {
-  default = "P@ssw0rd!"
+  default = ""
 }
 variable "cml_username" {
-  default = "admin"
+  default = ""
 }
 variable "total_ram" {
   default = 8192

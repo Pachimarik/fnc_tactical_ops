@@ -16,12 +16,11 @@ output "port_ssh_os" {
 output "connection_url" {
   value = "https://${data.vcd_edgegateway.egw.default_external_network_ip}:${vcd_nsxv_dnat.dnat-frontend.original_port}/"
 }
-#output "bearer" {
-#  value = local.result
-#}
-output "username" {
-  value = var.cml_username
+output "cml-username" {
+  value = local.username
+  sensitive = true
 }
-output "password" {
-  value = var.cml_passwd
+output "cml-pw" {
+  value = local.password
+  sensitive = true
 }
